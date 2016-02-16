@@ -15,6 +15,8 @@ elixir(function(mix) {
     mix.sass('app.scss');
     mix.scripts([
     	'vendor/vue.js',
-    	'vendor/vue-resource.js'
+    	'vendor/vue-resource.js',
+    	'vendor/gibber.lib.js',
+
     ], 'public/js/vendor.js');
 });
