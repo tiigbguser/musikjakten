@@ -1,3 +1,9 @@
+# Musikjakten web
+This is a laravel project that also uses vue.js
+I recommend using vagrant and the homestead virtual box to run the development environment. Check this video:
+https://www.youtube.com/watch?v=WDU1TYe3zGU
+
+
 # Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
