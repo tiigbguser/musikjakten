@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,16 +24,27 @@ Route::get('/', function () {
 |
 */
 
+
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
+    Route::get('/', function () {
+        return view('welcome');
+    });
+    Route::get('/settings', 'ProfileController@index');
 
     Route::get('/home', 'HomeController@index');
 
     Route::get('/logs', 'LogController@index');
     Route::post('/log', 'LogController@store');
-    Route::delete('/logs/{log}', 'LogController@destroy');
+    Route::get('/logs/{log}', 'LogController@destroy');
 
     Route::get('json/logs', 'LogController@getJson');
+
+    Route::get('json/settings', 'ProfileController@getJson');
+    Route::post('json/settings/save', 'ProfileController@store');
+    // Route::get('json/logs', function(){
+    // 	App\Log::all();
+    // });
 
 });
 

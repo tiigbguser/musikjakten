@@ -23,6 +23,9 @@
 
 
                 </div>
+
+                <pre>
+                </pre>
             </div>
         </div>
     </div>
@@ -32,8 +35,6 @@
 <script>
 var genome=[1.0,0.5,0.1,0.7,0.2,0.9,0.0,0.4,1.0,0.1];
 </script>
-
-<script src="/js/vendor.js"></script>
 <script src="js/home.js"> </script>
 <script>
 

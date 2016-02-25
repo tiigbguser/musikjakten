@@ -17,25 +17,26 @@
 		<button type="submit">add log</button>
 	</form>
 
+	<div id="hello" class="container">
+	    <div class="row">
+	        <div class="col-md-10 col-md-offset-1">
+	            <div class="panel panel-default">
+	                <p v-for="log in logs">
+                		<b>@{{log.id}}</b>
+                		@{{log.music_data}}
+                		<b>
+                			@{{log.name}}
+                		</b>
+                	</p>
+	            </div>
+	        </div>
+	    </div>
+	    <pre>
+			@{{ $data | json}}
+		</pre>
+	</div>
 
-	@if(count($logs) > 0)
-		<div class="container">
-		    <div class="row">
-		        <div class="col-md-10 col-md-offset-1">
-		            <div class="panel panel-default">
-		                @foreach($logs as $log)
-		                	<p>
-		                		{{$log->music_data}}
-		                		<b>
-		                			{{$log->name}}
-		                		</b>
-		                	</p>
-		                @endforeach
-		            </div>
-		        </div>
-		    </div>
-		</div>
-	@else
-		<p> Inga loggar för dig min vän! Skapa lite musik så får du loggar :-) </p>
-	@endif
+	
+
+
 @endsection

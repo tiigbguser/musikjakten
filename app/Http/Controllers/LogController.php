@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\LogRepository;
+use App\Log;
 
 class LogController extends Controller
 {
@@ -14,16 +15,20 @@ class LogController extends Controller
 
     public function __construct(LogRepository $logs)
     {
-    	$this->middleWare('auth');
+    	// $this->middleWare('auth');
 
     	$this->logs = $logs;
     }
 
     public function index(Request $request)
     {
-    	return view('logs.index', [
-    		'logs' => $this->logs->forUser($request->user()),
-    	]);
+        if($request->user()){
+        	return view('logs.index', [
+        		'logs' => $this->logs->forUser($request->user()),
+        	]);
+        }else{
+            return redirect('/');
+        }
     }
 
 
@@ -34,13 +39,7 @@ class LogController extends Controller
     		'sound_engine' => 'numeric|required',
     		'action' => 'required',
     		'name' => 'alpha_dash|max:255',
-
     	]);
-
-        if(!$request->user()->logs())
-        {
-            echo 'no logs!';
-        }
 
     	$request->user()->logs()->create([
     		'music_data' => $request->music_data,
@@ -52,8 +51,15 @@ class LogController extends Controller
     	return redirect('/logs');
     }
 
+    //TODO: Make sure you can't destroy someone else logs
+    public function destroy(Request $request, Log $log)
+    {
+        $log->delete();
+    }
+
     public function getJson(Request $request)
     {
-        return $this->logs->forUser($request->user());
+        // return $this->logs->forUser($request->user());
+        return Log::all();
     }
 }
