@@ -41,11 +41,8 @@ new Vue({
 	el: '#settings',
 
 	data:{
-		profile:[
-		{name: 'name',
-		id: '',
-		email: 'email'}
-		]
+		profile: '',
+		saved: true
 	},
 
 	ready:function(){
@@ -53,6 +50,10 @@ new Vue({
 	},
 
 	methods:{
+		fieldChange: function(){
+			this.saved = false;
+
+		},
 		getSettings: function(){
 			this.$http.get('/json/settings', function(settings){
 				this.profile = settings;
@@ -60,6 +61,7 @@ new Vue({
 		},
 		saveSettings: function(){
 			this.$http.post('json/settings/save', this.profile);
+			this.saved = true;
 		}
 	}
 })

@@ -15,7 +15,7 @@ class LogController extends Controller
 
     public function __construct(LogRepository $logs)
     {
-    	// $this->middleWare('auth');
+    	$this->middleWare('auth');
 
     	$this->logs = $logs;
     }

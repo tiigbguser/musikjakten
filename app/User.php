@@ -16,6 +16,10 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+    protected $casts = [
+        'demographic_data' => 'array'
+    ];
+
     /**
      * The attributes excluded from the model's JSON form.
      *

@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Auth;
 
 use App\User;
 use App\Repositories\LogRepository;
+
 
 class ProfileController extends Controller
 {
@@ -19,20 +21,26 @@ class ProfileController extends Controller
 
     public function index(Request $request)
     {
-    	$profile = $request->user();
-    	return view('profile.settings', ['profile' => $profile]);
+        if(Auth::check()){
+        	$profile = $request->user();
+        	return view('profile.settings', ['profile' => $profile]);
+        }
 
     }
 
     public function store(Request $request)
     {
-        $user = $request->user();
-        $user->name = $request->name;
-        $user->save();
-    	//TODO: Validate this shit!!
-    	// $this->validate($request,[
+        if(Auth::check()){
+            $user = $request->user();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->demographic_data = $request->demographic_data;
+            $user->save();
+        	//TODO: Validate this shit!!
+        	// $this->validate($request,[
 
-    	// ]);
+        	// ]);
+        }
 
     }
 
