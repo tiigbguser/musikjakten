@@ -11,12 +11,20 @@ var elixir = require('laravel-elixir');
  |
  */
 
+elixir.config.js.browserify.watchify = {
+  enabled: true,
+  options: {
+    poll: true
+  }
+};
+
 elixir(function(mix) {
     mix.sass('app.scss');
     mix.scripts([
-    	'vendor/vue.js',
-    	'vendor/vue-resource.js',
-    	'vendor/gibber.lib.js',
-
-    ], 'public/js/vendor.js');
+      'vendor/gibber.lib.js'
+    ], 'public/js/gibber.js');
+    mix.scripts([
+  ], 'public/js/vendor.js');
+    mix.browserify('main.js');
+    mix.browserify('home.js');
 });

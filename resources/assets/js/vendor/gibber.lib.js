@@ -828,21 +828,21 @@ param **bus** : Bus ugen. Optional. The bus to disconnect the ugen from. If this
       disconnect : function(bus, tempDisconnect ) { // tempDisconnect is used to do a short disconnect and reconnect
         var idx
         
-        if( !tempDisconnect ) {
-          /*if( this.children ) {
-            for(var i = 0; i < this.children.length; i++) {
-              this.children[i].disconnect( this )
-            }
-          }else if( typeof this.input === 'object' ) {
-            this.input.disconnect( null, tempDisconnect )
-          }*/
+        // if( !tempDisconnect ) {
+        //   /*if( this.children ) {
+        //     for(var i = 0; i < this.children.length; i++) {
+        //       this.children[i].disconnect( this )
+        //     }
+        //   }else if( typeof this.input === 'object' ) {
+        //     this.input.disconnect( null, tempDisconnect )
+        //   }*/
           
-          /*var idx = Gibberish.callbackArgs.indexOf( this.symbol )
-          Gibberish.callbackArgs.splice(idx, 1)
+        //   /*var idx = Gibberish.callbackArgs.indexOf( this.symbol )
+        //   Gibberish.callbackArgs.splice(idx, 1)
         
-          idx = Gibberish.callbackObjects.indexOf( this.callback )        
-          Gibberish.callbackObjects.splice(idx, 1)*/
-        }
+        //   idx = Gibberish.callbackObjects.indexOf( this.callback )        
+        //   Gibberish.callbackObjects.splice(idx, 1)*/
+        // }
         
         if( !bus ) {
           for(var i = 0; i < this.destinations.length; i++) {
@@ -865,7 +865,7 @@ param **bus** : Bus ugen. Optional. The bus to disconnect the ugen from. If this
 };
 
 
-Array2 = function() { 
+var Array2 = function() { 
   this.length = 0;
 };
 
@@ -15506,8 +15506,8 @@ module.exports = function( Gibber ) {
           if( !doNotSet ) target.object[ target.propertyName ] = mapping.getValue()
           
           //if( mapping.op ) mapping.op.remove()
-          
-          delete mapping
+          console.log("Hit point of removed delete");
+          // delete mapping;
         }
         
         if( typeof from.object.label !== 'undefined' ) { 
