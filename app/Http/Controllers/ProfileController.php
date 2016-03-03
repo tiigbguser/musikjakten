@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 
 use App\User;
+use App\Question;
 use App\Repositories\LogRepository;
 
 
@@ -36,6 +37,10 @@ class ProfileController extends Controller
             $user->email = $request->email;
             $user->demographic_data = $request->demographic_data;
             $user->save();
+
+
+            // return response("böög", 404);
+
         	//TODO: Validate this shit!!
         	// $this->validate($request,[
 
@@ -46,7 +51,17 @@ class ProfileController extends Controller
 
     public function getJson(Request $request)
     {
-        return $request->user();
+        $response = ['user' => '',
+                    'questions' => ''];
+
+        $response['user'] = $request->user();
+        // $collection = Question::all();
+        // $keyedCollection = $collection->keyBy('key');
+        // $response['questions'] = $keyedCollection;
+
+        $response['questions'] = Question::all()->keyBy('key');
+        // return Question::all();
+        return $response;
     }
 }
 
