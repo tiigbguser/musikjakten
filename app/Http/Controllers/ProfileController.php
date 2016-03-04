@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Storage;
 use Auth;
 
 use App\User;
@@ -55,12 +57,15 @@ class ProfileController extends Controller
                     'questions' => ''];
 
         $response['user'] = $request->user();
-        // $collection = Question::all();
-        // $keyedCollection = $collection->keyBy('key');
-        // $response['questions'] = $keyedCollection;
 
-        $response['questions'] = Question::all()->keyBy('key');
-        // return Question::all();
+        // $response['questions'] = Question::all()->keyBy('key');
+        try{
+            $questions = collect(json_decode(Storage::get('questionschema.json'),true)); 
+        }catch(Exception $e){
+            echo $e;
+        }
+
+        $response['questions'] = $questions;
         return $response;
     }
 }

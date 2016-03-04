@@ -59,10 +59,14 @@ new Vue({
 
   methods:{
     getQuestion: function(key){
-      console.log(key);
+      
       if(this.questions[key]){
-        return this.questions[key];
-      }else return '';
+        console.log(this.questions[key].question);
+        return this.questions[key].question;
+      }else{
+        console.log(key);
+        return key;
+      }
     },
     fieldChange: function(){
       this.saved = false;

@@ -1,3 +1,6 @@
+label {
+  font-size: 110%; }
+
 /* always present */
 .fade-transition {
   transition: all 4s ease;

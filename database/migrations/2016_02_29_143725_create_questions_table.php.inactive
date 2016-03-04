@@ -1,0 +1,61 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateQuestionsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('questions', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('key')->unique();
+            $table->string('group');
+            $table->string('question');
+            $table->string('placeholder')->nullable();
+            $table->string('type');
+            $table->json('schema')->nullable();
+            $table->timestamps();
+        });
+
+        // try{
+        //     $contents = json_decode(Storage::get('questions.json'), true);
+        // }catch(Exception $e){
+        //     echo $e;
+        // }
+        // $path = './questions.json';
+
+        // Storage::put($path, 'Baaaaajs');
+
+        // DB::table('questions')->insert($contents);
+
+        // Insert some stuff
+        // DB::table('questions')->insert(
+        //     [
+        //         [
+        //         'key' => 'Musikstilar',
+        //         'question' => 'Fråååååga'
+        //         ],
+        //         [
+        //         'key' => 'Band',
+        //         'question' => 'Viiilkas Band?!'
+        //         ],
+        //     ]
+        // );
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('questions');
+    }
+}

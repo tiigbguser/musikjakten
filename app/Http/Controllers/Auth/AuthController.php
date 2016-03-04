@@ -63,56 +63,47 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        $demographic_data =['Grunduppgifter' =>  [ 
-                                                    'Förnamn' => '',
-                                                    'Efternamn' => '',
-                                                    'Skola' =>'',
-                                                    'Klass' => '',
-                                                    'Stad' => '',
-                                                    'Ålder' => '',
-                                                    'Kön' => ''
-                                                    ],
-                            'Musikkonsumtion' => [
-                                                    'Musikstilar' => '',
-                                                    'Band' => '',
-                                                    'Lyssningstid' => '',
-                                                    'numberscale' => [
-                                                        'Musikintresserad' => '',
-                                                        'Letar nytt' => '',
-                                                        'Samma som kompisar' => '',
-                                                        'Tillsammans' => '',
-                                                        'Live' => '',
-                                                        'Bara lyssna' => '',
-                                                        'Bakgrundsmusik' => ''
-                                                        ]
-
-                                                    ],
-                            'Musikskapande' => [
-                                                    'Instrument då' => '',
-                                                    'Instrument nu' => '',
-                                                    'Speltid' => '',
-                                                    'Musikstil' => '',
-                                                    'Datormusik' => '',
-                                                    'Tid totalt' => '',
-                                                    'numberscale' => [
-                                                        'Annans musik' => '',
-                                                        'Noter' => '',
-                                                        'Egen musik' => '',
-                                                        'Tillsammans' => '',
-                                                        'Största intresse' => '',
-
-                                                        ]
-                                                    ]
-                            ];
+        // $demographic_data = [
+        //                     'Förnamn' => '',
+        //                     'Efternamn' => '',
+        //                     'Skola' =>'',
+        //                     'Klass' => '',
+        //                     'Stad' => '',
+        //                     'Ålder' => '',
+        //                     'Kön' => '',
+        //                     'Musikstilar' => '',
+        //                     'Band' => '',
+        //                     'Lyssningstid' => '',
+        //                     'Lyssningsvanor' => [
+        //                         'Musikintresserad' => '',
+        //                         'Letar nytt' => '',
+        //                         'Samma som kompisar' => '',
+        //                         'Tillsammans' => '',
+        //                         'Live' => '',
+        //                         'Bara lyssna' => '',
+        //                         'Bakgrundsmusik' => ''
+        //                         ],
+        //                     'Instrument då' => '',
+        //                     'Instrument nu' => '',
+        //                     'Speltid' => '',
+        //                     'Musikstil' => '',
+        //                     'Datormusik' => '',
+        //                     'Tid totalt' => '',
+        //                     'Spelvanor' => [
+        //                         'Annans musik' => '',
+        //                         'Noter' => '',
+        //                         'Egen musik' => '',
+        //                         'Tillsammans' => '',
+        //                         'Största intresse' => '',
+        //                         ]
+        //                     ];
 
         $newUser = User::create([
+            'demographic_data' => '',
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
-
-        $newUser->demographic_data = $demographic_data;
-        $newUser->save();
 
         return $newUser;
     }
