@@ -30,8 +30,19 @@
 					<div class="panel-body">
 						<template v-for="(fieldkey, formfield) in category">
 							<div v-if="formfield.type === 'text'" class="form-group">
+								<label tabindex="@{{$index+1}}" for="@{{fieldkey}}">@{{formfield.question}} </label>
+								<input v-on:input="fieldChange" type="@{{formfield.type}}" placeholder="@{{formfield.placeholder}}" name="@{{fieldkey}}" id="input@{{$fieldkey}}" v-model="profile.demographic_data[fieldkey]" value="@{{profile.demographic_data[fieldkey]}}" class="form-control" >
+							</div>
+
+							<div v-if="formfield.type === 'radio'" class="form-group">
 								<label for="@{{fieldkey}}">@{{formfield.question}} </label>
-								<input v-on:input="fieldChange" type="@{{formfield.type}}" name="@{{fieldkey}}" id="input@{{$fieldkey}}" v-model="profile.demographic_data[fieldkey]" value="@{{profile.demographic_data[fieldkey]}}" class="form-control">
+
+								<div class="radio" v-for="radiofield in formfield.schema" >
+									<label tabindex="@{{$index+1}}" for="@{{$key}}">
+										<input v-on:input="fieldChange" type="@{{formfield.type}}" name="@{{fieldkey}}" id="input@{{$key}}" v-model="profile.demographic_data[fieldkey]" value="@{{radiofield}}" >
+										@{{radiofield}}
+									</label>
+								</div>
 							</div>
 
 
@@ -45,7 +56,7 @@
 										<div name="@{{$key}}" class="btn-group col-sm-5 col-md-4" data-toggle="buttons" v-radio="profile.demographic_data[fieldkey][$key]">
 											 <label v-on:click="fieldChange" class="btn btn-primary"> <input type="radio" autocomplete="off" value="1" />1</label>
 											 <label v-on:click="fieldChange" class="btn btn-primary"> <input type="radio" autocomplete="off" value="2" />2</label>
-											 <label v-on:click="fieldChange" class="btn btn-primary"> <input type="radio" autocomplete="off" value="3" />3</label>
+											 <label v-on:click="fieldChange" class="btn btn-primary"> <input tabindex="@{{$index+1}}" type="radio" autocomplete="off" value="3" />3</label>
 											 <label v-on:click="fieldChange" class="btn btn-primary"> <input type="radio" autocomplete="off" value="4" />4</label>
 											 <label v-on:click="fieldChange" class="btn btn-primary"> <input type="radio" autocomplete="off" value="5" />5</label>
 										</div>
