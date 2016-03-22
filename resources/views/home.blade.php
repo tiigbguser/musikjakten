@@ -11,15 +11,22 @@
 
                 <div class="panel-body">
 
-                    <div id="hello">
+                    {{-- <div id="hello">
                         <article v-for="log in logs">
                             <b>@{{log.name}}</b>
                             <br />
                             @{{log.music_data}}
                         </article>
-                    <div>
+                        <button v-on:click="newGenome" > new sound</button>
+                        
+                    <div> --}}
 
-                    <button v-on:click="newGenome" > new sound</ button>
+                    <div id="app">
+                        {{-- <pre>@{{genome.audiplayer | json}}</pre> --}}
+                        <test></test>
+                    </div>
+
+
 
 
                 </div>
@@ -32,12 +39,15 @@
 </div>
 
 
+
 <script>
-var genome=[1.0,0.5,0.1,0.7,0.2,0.9,0.0,0.4,1.0,0.1];
+    var genome = [1.0,0.5,0.1,0.7,0.2,0.9,0.0,0.4,1.0,0.1];
 </script>
-<script src="js/gibber.js"> </script>
-<script src="js/home.js"> </script>
-<script>
-</script>
+
+<script src="js/gibber.js"></script>
+<script src="js/soundengine.js"></script>
+<script src="js/app.js"></script>
+
+
 
 @endsection

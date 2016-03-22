@@ -7,10 +7,13 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Welcome</div>
                 <div class="panel-body">
-                    Your Application's Landing Page.
+                    Bajs!
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+{{-- <script src="js/soundengine.js"></script> --}}
+{{-- <script src="js/gibber.js"></script> --}}
 @endsection

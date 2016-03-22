@@ -72,7 +72,7 @@
 				</div>
 
 				<div v-show="saveFailed" transition="fade" class="inline alert alert-danger"><p>Whooops! Jag lyckades inte spara inställningarna.</p></div>
-				<div v-show="saved and !saveSuccess" transition="fade" class="inline alert alert-warning"><p>Dina inställningar är sparade</p></div>
+				{{-- <div v-show="saved and !saveSuccess" transition="fade" class="inline alert alert-warning"><p>Dina inställningar är sparade</p></div> --}}
 
 				<div v-show="saveSuccess" transition="fade" class="inline alert alert-success"><p>Dina inställningar har sparats!</p></div>
 				
@@ -91,4 +91,7 @@
 		        </div>
 		    </div>
 		</div>
+
+
+		<script src="js/settings.js"></script>
 @endsection

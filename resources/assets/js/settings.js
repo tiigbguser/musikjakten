@@ -1,45 +1,14 @@
-var Vue = require('vue');
-Vue.use(require('vue-resource'));
+import Vue from './vendor/vue'
+import VueResource from './vendor/vue-resource'
+// import Store from './store/store'
 
-//Make sure we send along a token in the ajax requests
-Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#token').getAttribute('value');
+// import test from './components/test'
+// var test = require('./components/test.vue')
 
-new Vue({
-  el: '#hello',
+// Vue.use(Vuex);
+Vue.use(VueResource);
 
-  data:{
-    logs:[
-      {music_data: 'test',
-      name: 'test'},
-      ],
-  },
 
-  // computed:{
-
-  // },
-
-  ready: function(){
-    this.fetchLogs();
-  },
-
-  methods: {
-    fetchLogs: function(){
-      this.$http.get('/json/logs', function(logs){
-        // this.$set('logs', logs);
-        this.logs = logs;
-      });
-
-      for(var i=0;i<10;i++) {
-          genome[i]=Math.random();
-      }
-    },
-    newGenome: function(){
-      for(var i=0;i<10;i++) {
-          genome[i]=Math.random();
-      }
-    },
-  }
-});
 
 new Vue({
   el: '#settings',
@@ -75,10 +44,10 @@ new Vue({
 
     },
     getSettings: function(){
-      this.$http.get('/json/settings', function(settings){
-        console.log(settings);
-        this.profile = settings.user;
-        this.questions = settings.questions;
+      this.$http.get('/json/settings').then(function(settings){
+        console.log(settings.data);
+        this.profile = settings.data.user;
+        this.questions = settings.data.questions;
       });
     },
     saveSettings: function(){
@@ -97,6 +66,7 @@ new Vue({
 
   }
 });
+
 
 Vue.directive('radio', {
   twoWay: true,
@@ -130,4 +100,4 @@ Vue.directive('radio', {
           }
       }
   }
-})
+});

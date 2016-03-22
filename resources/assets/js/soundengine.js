@@ -26,11 +26,10 @@ plutt.phase = 0
 
 var a = Mono('bass').note.seq( plutt, 1/8 )
 
-var b = EDrums('x-o-x-o-')
+var b = EDrums('x-o-x-o-x*o*x*o*', [genome[4]/4, genome[1]/4, genome[3]/4])
 b.snare.snappy = 1
 
-var c = Mono('easyfx')
-  .note.seq( plutt, [1/4,1/8,1/2,1,2] )
+var c = Mono('easyfx').note.seq( plutt, [1/4,1/8,1/2,1,2,1/4] )
 
 // these since oscillators create a cluster with frequencies from the genome
 var d = Sine( Mul(Proxy( genome, 0 ),1000), .05 )
@@ -49,7 +48,3 @@ var g = Sine( Mul(Proxy( genome, 3 ),1000), .05 )
 
 // but you cannot substitute the whole array like the following, because that creates a new array object and breaks the references
 // genome=[1,0.2,0.4,0.6,0.2,0.9,0.0,0.4,1.0,0.1];
-
-
-
-

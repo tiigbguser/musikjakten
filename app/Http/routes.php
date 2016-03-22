@@ -42,6 +42,9 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('json/settings', 'ProfileController@getJson');
     Route::post('json/settings/save', 'ProfileController@store');
+
+    // Route::get('/test', 'ProfileController@index');
+
     // Route::get('json/logs', function(){
     // 	App\Log::all();
     // });

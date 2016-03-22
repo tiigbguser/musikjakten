@@ -17,7 +17,8 @@ class User extends Authenticatable
     ];
 
     protected $casts = [
-        'demographic_data' => 'array'
+        'demographic_data' => 'array',
+        'music_data' => 'array'
     ];
 
     /**
