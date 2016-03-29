@@ -1,9 +1,9 @@
 <template>
   <div class="{{isActive?'bg-success':'bg-info'}}" v-on:click="select(index)">
-    <p>{{"index: " + index}}</p>
+<!--     <p>{{"index: " + index}}</p>
     <p>{{"currentlySelected: " + currentlySelected}}</p>
     <p>{{"isActive: " + isActive}}</p>
-    <p>{{"myGenome: " + myGenome}}</p>
+    <p>{{"myGenome: " + myGenome}}</p> -->
     <genomepic :genome="myGenome" :is-active="isActive"></genomepic>
     <button v-on:click="mutate(index)"> mutera mig</button>
     <button v-on:click="randomize(index)"> slumpa mig</button>
