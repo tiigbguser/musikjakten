@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Log;
+use App\Genome;
 
 class User extends Authenticatable
 {
@@ -18,7 +19,7 @@ class User extends Authenticatable
 
     protected $casts = [
         'demographic_data' => 'array',
-        'music_data' => 'array'
+        // 'music_data' => 'array'
     ];
 
     /**
@@ -33,5 +34,10 @@ class User extends Authenticatable
     public function logs()
     {
         return $this->hasMany(Log::class);
+    }
+
+    public function genomes()
+    {
+        return $this->hasMany(Genome::class);
     }
 }

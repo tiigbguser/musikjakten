@@ -54,4 +54,5 @@ elixir(function(mix) {
 
     mix.browserify('app.js');
     mix.browserify('settings.js');
+    mix.browserify('logs.js');
 });

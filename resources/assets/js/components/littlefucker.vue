@@ -5,8 +5,17 @@
     <p>{{"isActive: " + isActive}}</p>
     <p>{{"myGenome: " + myGenome}}</p> -->
     <genomepic :genome="myGenome" :is-active="isActive"></genomepic>
-    <button v-on:click="mutate(index)"> mutera mig</button>
-    <button v-on:click="randomize(index)"> slumpa mig</button>
+    <p>{{myGenome.name}}</p>
+    <button class="btn btn-primary" v-on:click.stop="mutate(index)"> mutera mig</button>
+    <button class="btn btn-primary" v-on:click.stop="randomize(index)"> slumpa mig</button>
+
+    <button class="btn btn-primary" v-if="!showSaveField && myGenome.name ===''" v-on:click.stop="showSaveField=true">spara mig</button>
+    <div v-if="showSaveField" class="input-group">
+      <input type="text" v-model="name" class="form-control" placeholder="Välj namn" autofocus />
+      <span class="input-group-btn">
+        <button v-on:click.stop="save" class="btn btn-primary" type="button">Go!</button>
+      </span>
+    </div><!-- /input-group -->
   </div>
   
 </template>
@@ -18,6 +27,15 @@
     props: ['index'], 
     data: function () {
       return {
+        name:'',
+        showSaveField: false,
+      }
+    },
+    methods: {
+      save(){
+        this.saveGenome(this.index, this.name);
+        this.showSaveField = false;
+        this.name = '';
       }
     },
     vuex: {

@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use App\Repositories\LogRepository;
 use App\Log;
 
+use Auth;
+
 class LogController extends Controller
 {
 	protected $logs;
@@ -24,7 +26,7 @@ class LogController extends Controller
     {
         if($request->user()){
         	return view('logs.index', [
-        		'logs' => $this->logs->forUser($request->user()),
+        		// 'logs' => $this->logs->forUser($request->user()),
         	]);
         }else{
             return redirect('/');
@@ -34,21 +36,33 @@ class LogController extends Controller
 
     public function store(Request $request)
     {
-    	$this->validate($request,[
-    		'music_data' => 'required',
-    		'sound_engine' => 'numeric|required',
-    		'action' => 'required',
-    		'name' => 'alpha_dash|max:255',
-    	]);
+    	// $this->validate($request,[
+    	// 	'music_data' => 'required',
+    	// 	'sound_engine' => 'numeric|required',
+    	// 	'action' => 'required',
+    	// 	'name' => 'alpha_dash|max:255',
+    	// ]);
+
+        // $request->user()->logs()->create([
+        //     'music_data' => $request->state,
+        //     'sound_engine' => $request->state->soundengine,
+        //     'action' => $request->action,
+        //     'name' => $request->name,
+        // ]);
+
+        // if(Auth::check()){
+        //     return response($request, 202);
+        // }else{
+        //     return response("faaaaaail", 403);
+        // }
 
     	$request->user()->logs()->create([
-    		'music_data' => $request->music_data,
-    		'sound_engine' => $request->sound_engine,
-    		'action' => $request->action,
+            'action' => $request->action,
+    		'app_state' => $request->state,
     		'name' => $request->name,
     	]);
 
-    	return redirect('/logs');
+        return response($request->name, 202);
     }
 
     //TODO: Make sure you can't destroy someone else logs

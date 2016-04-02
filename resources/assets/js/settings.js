@@ -8,7 +8,8 @@ import VueResource from './vendor/vue-resource'
 // Vue.use(Vuex);
 Vue.use(VueResource);
 
-
+//Make sure we send along a token in the ajax requests
+Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#token').getAttribute('value');
 
 new Vue({
   el: '#settings',
@@ -28,7 +29,6 @@ new Vue({
 
   methods:{
     getQuestion: function(key){
-      
       if(this.questions[key]){
         console.log(this.questions[key].question);
         return this.questions[key].question;

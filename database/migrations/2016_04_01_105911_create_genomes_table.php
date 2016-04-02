@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLogsTable extends Migration
+class CreateGenomesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,11 @@ class CreateLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('logs', function (Blueprint $table) {
+        Schema::create('genomes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->index();
-            $table->text('app_state');
-            $table->string('action');
+            $table->string('name');
+            $table->text('genome');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateLogsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('logs');
+        Schema::drop('genomes');
     }
 }

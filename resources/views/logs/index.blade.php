@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -23,18 +24,20 @@
 	            <div class="panel panel-default">
 	                <p v-for="log in logs">
                 		<b>@{{log.id}}</b>
-                		@{{log.music_data}}
+                		@{{log.action}}
                 		<b>
-                			@{{log.name}}
+                			@{{log.app_state.selected}}
                 		</b>
                 	</p>
 	            </div>
 	        </div>
 	    </div>
 	    <pre>
-			@{{ $data | json}}
+			@{{ logs | json}}
 		</pre>
 	</div>
+
+<script src="js/logs.js"></script>
 
 	
 

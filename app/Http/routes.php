@@ -30,15 +30,17 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/', function () {
         return view('welcome');
     });
+    
     Route::get('/settings', 'ProfileController@index');
-
     Route::get('/home', 'HomeController@index');
 
     Route::get('/logs', 'LogController@index');
-    Route::post('/log', 'LogController@store');
-    Route::get('/logs/{log}', 'LogController@destroy');
+
+
+    Route::post('json/genome/save', 'GenomeController@store');
 
     Route::get('json/logs', 'LogController@getJson');
+    Route::post('json/logs/save', 'LogController@store');
 
     Route::get('json/settings', 'ProfileController@getJson');
     Route::post('json/settings/save', 'ProfileController@store');

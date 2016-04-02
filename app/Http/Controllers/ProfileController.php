@@ -11,13 +11,12 @@ use Storage;
 use Auth;
 
 use App\User;
-use App\Question;
-use App\Repositories\LogRepository;
+// use App\Question;
 
 
 class ProfileController extends Controller
 {
-    public function __construct(LogRepository $logs)
+    public function __construct()
     {
     	$this->middleWare('auth');
     }
@@ -33,6 +32,7 @@ class ProfileController extends Controller
 
     public function store(Request $request)
     {
+
         if(Auth::check()){
             $user = $request->user();
             $user->name = $request->name;

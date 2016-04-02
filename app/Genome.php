@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 
-class Log extends Model
+class Genome extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -13,11 +13,11 @@ class Log extends Model
      * @var array
      */
     protected $fillable = [
-        'app_state', 'action',
+    	'name', 'genome', 
     ];
 
     protected $casts = [
-        'app_state' => 'array'
+        'genome' => 'array'
     ];
 
     public function user()
@@ -34,5 +34,4 @@ class Log extends Model
     // {
     // 	return $this->belongsTo(Log::class, 'previous_log_id');
     // }
-
 }
