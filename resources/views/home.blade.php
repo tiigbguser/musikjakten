@@ -23,7 +23,8 @@
 
                     <template id="app">
                         {{-- <pre>@{{genome.audiplayer | json}}</pre> --}}
-                        <test></test>
+                        <breed-area></breed-area>
+                        <genome-list></genome-list>
                     </template>
 
 

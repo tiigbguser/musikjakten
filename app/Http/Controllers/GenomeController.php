@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Genome;
 
 class GenomeController extends Controller
 {
@@ -24,13 +25,20 @@ class GenomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-
-
-
+        // return response($request->user()->id, 202);
+        return $request->user()->genomes;
     }
 
+    public function others(Request $request){
+        return Genome::where('user_id', '!=', $request->user()->id)->get();
+    }
+
+    public function all(){
+        // return response('hejhopp: [1,2,3]',202);
+        return Genome::all();
+    }
 
     public function store(Request $request)
     {

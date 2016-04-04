@@ -8,7 +8,8 @@ var Vue = require('./vendor/vue');
 import store from './vuex/store'
 // var store = require('./vuex/store');
 
-var test = require('./components/test.vue')
+var breedArea = require('./components/breedArea.vue');
+var genomeList = require('./components/genomeList.vue');
 
 
 // Vue.use(VueResource);
@@ -27,6 +28,7 @@ var app = new Vue({
   el: '#app',
   store,
   components: {
-    test
+    breedArea,
+    genomeList
   }
 });

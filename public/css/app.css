@@ -12,24 +12,21 @@ label {
   opacity: 0; }
 
 .navbar-default {
-  background-color: rgb(49, 48, 66); 
-}
+  background-color: #313042; }
 
 .navbar-default .navbar-brand {
-  color: rgb(241, 130, 96); 
-}
-.navbar-default .navbar-nav>li>a {
-  color: rgb(159, 159, 159); 
-}
-.panel-default>.panel-heading {
-  background-color: rgb(49, 48, 66); 
-}
+  color: #f28361; }
+
+.navbar-default .navbar-nav > li > a {
+  color: #9f9f9f; }
+
+.panel-default > .panel-heading {
+  background-color: #313042; }
 
 body {
-  background-color: #DDDDDD
-}
+  background-color: #DDDDDD; }
+
 .panel {
-  background-color: #EEEEEE
-}
+  background-color: #EEEEEE; }
 
 /*# sourceMappingURL=app.css.map */

@@ -7,10 +7,10 @@
   <button v-on:click="mutate(1)" > mutate 1</button> -->
   <div class="col-md-6" v-for="parent in state.parents" track-by="$index">
     <!-- <p>{{$index  + "   ___   " +  parent}}</p> -->
-    <littlefucker v-if="parent.genome.length > 0" :index="$index"></littlefucker>
+    <genome-box v-if="parent.genome.length > 0" :index="$index"></genome-box>
   </div>
   <div class="col-md-2" v-for="child in state.children" track-by="$index">
-    <littlefucker v-if="child.genome.length > 0" :index="$index+2"></littlefucker>
+    <genome-box v-if="child.genome.length > 0" :index="$index+2"></genome-box>
   </div>
 </template>
 
@@ -22,24 +22,6 @@ import * as actions from '../vuex/actions'
       return {
         debug: 'debug'
       }
-    },
-    methods: {
-      // saveState(){
-      //   this.$http.post('json/logs/save', this.state).then(
-      //   function(response){
-      //     // alert("save sucess");
-      //     //success
-      //     // this.saved = true;
-      //     // this.saveSuccess = true;
-      //   }, function(response){
-      //     //fail
-      //     // this.saveFailed = true;
-      //     alert("save failed");
-      //   });
-      // },
-      // loadState(){
-
-      // },
     },
     vuex: {
       getters: {
@@ -66,7 +48,7 @@ import * as actions from '../vuex/actions'
       actions
     },
     components: {
-      'littlefucker' : require('./littlefucker.vue')
+      'genomeBox' : require('./genomeBox.vue')
     }
   }
 </script>

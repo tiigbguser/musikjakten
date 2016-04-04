@@ -6,6 +6,13 @@ export function randomize(store, index){
 	store.dispatch('RANDOM', index);
 }
 
+export function loadAsParent1(store, genome){
+	store.dispatch('LOADGENOMEINTO', genome, 0);
+}
+export function loadAsParent2(store, genome){
+	store.dispatch('LOADGENOMEINTO', genome, 1);
+}
+
 export function saveGenome(store, index, name){
 	store.dispatch('SAVE', index, name);
 }

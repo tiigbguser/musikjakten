@@ -36,7 +36,9 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/logs', 'LogController@index');
 
-
+    Route::get('json/genome/all', 'GenomeController@all');
+    Route::get('json/genome/others', 'GenomeController@others');    
+    Route::get('json/genome/index', 'GenomeController@index');
     Route::post('json/genome/save', 'GenomeController@store');
 
     Route::get('json/logs', 'LogController@getJson');
