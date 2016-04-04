@@ -12,6 +12,10 @@ dependencies:
     - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; fi
     - docker build -t tiigbguser/musikjakten .
     - mkdir -p ~/docker; docker save tiigbguser/musikjakten > ~/docker/image.tar
+    
+test:
+  override:
+    -
 
 deployment:
   hub:
